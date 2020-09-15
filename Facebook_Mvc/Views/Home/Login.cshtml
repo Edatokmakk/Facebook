@@ -1,0 +1,103 @@
+﻿@model Facebook_Mvc.Models.User
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <link href="~/css/login.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header_wrapper">
+        <div id="header">
+            <li id="sitename"><a style="font-size:40px;" href="#">facebook</a></li>
+            <form asp-action="Login" method="post" id="loginfrm">
+                <li>E-posta veya Telefon<br><input asp-for="Eposta"></li>
+                <li id="sifreInput">Şifre<br><input asp-for="Password" type="password" name="password"><br><a href="">Hesabını mı unuttun?</a></li>
+                <li><input style="background-color: #3B5C9E;" type="submit" name="login" value="Giriş Yap"></li>
+            </form>
+        </div>
+    </div>
+
+    <div id="wrapper">
+
+        <div id="div1">
+            <p style="width:27rem;font-size:20px;line-height: 29px;font-weight: 700;color:#0e385f;">Facebook tanıdıklarınla iletişim kurmanı ve hayatında olup bitenleri paylaşmanı sağlar.</p>
+            <img src="~/img/loginphott.png" style="width:35rem;height:12rem;">
+        </div>
+
+        <div id="div2">
+            <h1>Hesap Aç</h1>
+            <p>Hızlı ve kolaydır.</p>
+            <form asp-action="Signup" method="post">
+                <li><input asp-for="UserName" type="text" placeholder="Adın" id="firstname"><input asp-for="LastName" type="text" placeholder="Soyadın" id="surname"></li>
+                <li><input asp-for="Eposta" type="text" placeholder="Cep telefonu numarası veya e-posta"></li>
+                <!-- <li><input type="text" placeholder="Re-enter mobile number or email address"></li> -->
+                <li><input asp-for="Password" type="password" placeholder="Yeni şifre"></li>
+                <p style="font-size: 16px;line-height: 21px;color:#90949c;"><strong>Doğum tarihi</strong></p>
+                <li>
+                    <select id="day"><option>Day</option></select>
+                    <select name="month">
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <select id="year"></select>
+                    <a href="">Why do I need to provide my date of birth?</a>
+                </li>
+                <p style="font-size: 16px;line-height: 21px;color:#90949c;"><strong>Cinsiyet</strong></p>
+                <li id="cins">
+                    <input asp-for="Gender" name="gender" type="radio" value="Kadın">Kadın
+                    <input asp-for="Gender" name="gender" type="radio" value="Erkek">Erkek
+                    <input asp-for="Gender" name="gender" type="radio" value="Özel">Özel
+                </li>
+                <li style="font-size:11px;line-height:15px;color:#777777;width:20rem;" id="terms">Kaydol düğmesine tıklayarak,  <a href="">Koşullarımızı</a>,  <a href="">Veri İlkemizi</a> ve <a href="">Çerezler İlkemizi</a> kabul etmiş olursun. Bizden SMS Bildirimleri alabilir ve bu bildirimleri istediğin zaman durdurabilirsin.</li>
+                <li><input id="kayıt" type="submit" value="Kaydol"></li>
+            </form>
+            <li id="create_page" style="color:#666666;"> Ünlü biri, müzik grubu veya şirket için <a href="">Sayfa oluştur</a>.</li>
+        </div>
+
+    </div>
+
+    <div id="footer_wrapper">
+
+        <div id="footer1">
+            English (UK) <a href="">हिन्दी</a><a href="">ਪੰਜਾਬੀ</a><a href=""> اردو</a><a href="">தமிழ்</a><a href="">বাংলা</a><a href="">मराठी</a><a href="">తెలుగు</a><a href="">ગુજરાતી</a><a href="">ಕನ್ನಡ</a><a href="">മലയാളം</a>
+        </div>
+        <div id="footer2">
+            <a href="">Sign Up</a><a href="">Log In</a><a href="">Messenger</a><a href="">Talkerscode</a><a href="">Mobile</a><a href="">Find Friends</a><a href="">Badges</a><a href="">People</a><a href="">Pages</a><a href="">Places</a><a href="">Games</a><a href="">Locations</a><a href="">Celebrities</a><a href="">Groups</a><a href="">Moments</a><a href="">About</a><a href="">Create Advert</a><a href="">Create Page</a><a href="">Developers</a><a href="">Careers</a><a href="">Privacy</a><a href="">Cookies</a><a href="">Ads</a><a href="">Terms</a><a href="">Help</a>
+            <p>Design By TalkersCode.com</a>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</body>
+</html>
+
+<script>
+    var start = 1900;
+    var end = new Date().getFullYear();
+    var options = "";
+    for (var year = start; year <= end; year++) {
+        options += "<option>" + year + "</option>";
+    }
+    document.getElementById("year").innerHTML = options;
+
+    var daystart = 1;
+    var dayend = 31;
+    var optionss = "";
+    for (var day = daystart; day <= dayend; day++) {
+        optionss += "<option>" + day + "</option>";
+    }
+    document.getElementById("day").innerHTML = optionss;
+
+</script>
+<!--author:Eda Nur Tokmak-->

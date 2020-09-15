@@ -1,0 +1,107 @@
+﻿.topbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    height: 45px;
+    background: #4c66a4;
+    background: linear-gradient(to bottom, #4d67a7 0%,#3b5998 100%);
+    border-bottom: 1px solid #1e346a;
+}
+
+body {
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+    background: #e8ebed !important;
+}
+
+/*PROFILE*/
+.avatar-previewr img {
+    width: 17rem;
+    height: 17rem;
+    position: absolute;
+    border-radius: 100%;
+    border: 4px solid white;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    z-index: 102 !important;
+}
+
+.avatar-previewr {
+    margin-top: -18rem;
+    display: flex;
+}
+
+.pDuzenle {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 13px;
+    background-color: white;
+    color: #4b4f56;
+    width: 13rem;
+    text-decoration: none;
+    border: 1px solid #4b4f56;
+    margin-left: 55rem;
+    height: 30px;
+}
+
+.pDuzenle2 {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 13px;
+    background-color: white;
+    color: #4b4f56;
+    width: 16rem;
+    text-decoration: none;
+    border: 1px solid #4b4f56;
+    margin-left: 10px;
+    height: 30px;
+}
+
+.editBtns {
+    margin-top: -45px;
+    margin-left:10rem !important;
+}
+
+#kunye {
+    height: 50rem;
+    padding: 10px;
+    margin-left: 0;
+}
+
+#biyo li {
+    display: flex;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #90949c;
+    padding: 6px;
+}
+
+#biyo a {
+    color: #90949c;
+    margin-left: 10px;
+}
+
+#photos {
+    margin-top: 10px;
+    background-color: white;
+    height: 15rem;
+    padding: 10px;
+    margin-left: 0;
+}
+
+#friends {
+    margin-top: 10px;
+    background-color: white;
+    height: 5rem;
+    padding: 10px;
+    margin-left: 0;
+}
+
+#neler:focus {
+    outline: none;
+}

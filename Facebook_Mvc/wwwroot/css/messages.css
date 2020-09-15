@@ -1,0 +1,52 @@
+﻿/*MESSAGES*/
+
+#tabIconları li {
+    list-style-type: none;
+    margin: 10px;
+}
+
+#tabIconları i {
+    color: #0099FF;
+    font-size: 25px;
+}
+
+#messageInput li {
+    list-style-type: none;
+    margin: 10px;
+}
+
+#messageInput i {
+    font-size: 25px;
+    color: #0099FF;
+}
+
+.input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+}
+
+#secenekler:hover {
+    background-color: #F2F2F2;
+}/*MESSAGES*/
+
+
+msg_cotainer {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: #F1F0F0 !important;
+    padding: 10px;
+    position: relative;
+}
+
+.msg_cotainer_send {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+    background-color: #0099FF !important;
+    color: white !important;
+    padding: 10px;
+    position: relative;
+}

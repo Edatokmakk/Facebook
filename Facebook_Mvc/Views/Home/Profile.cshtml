@@ -1,0 +1,329 @@
+﻿<!--author:Eda Nur Tokmak-->
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Facebook_Mvc.ViewModel.AllModels
+<link rel="stylesheet" href="~/css/profile.css">
+<link rel="stylesheet" href="~/css/edit.css">
+<div class="row" id="arkaplan" style="z-index:3;">
+    <div class="col-1" style="margin-right:20px;"> </div>
+
+    <div class="col-7" style="margin-left: 90px;">
+        <div class="row" style="height:39rem;background:white;">
+            <img class="img-fluid" src="~/images2/@ViewBag.BackgroundImg" style="height: 35rem;width: 100%;">
+            <div class="editBtns">
+                <button onclick="myFunction()" class="pDuzenle"><i class="fas fa-edit" style="float: left;"></i> Profili Düzenle</button>
+                <button class="pDuzenle2">
+                    <i class="fas fa-bars" style="float: left;"></i> Hareketler Dökümü
+                    <button style="height:28px;border:none;text-decoration: none;">
+                        <i class="fas fa-ellipsis-h" style="border:none;"></i>
+                    </button>
+                </button>
+            </div>
+            <div class="editBottom" style="margin-left:30rem;display: flex;font-size: 14px;font-weight: 700;color:#385898;">
+                <a asp-action="Profile" asp-area="">
+                    <button type="submit" style="width:12rem;height:4rem;background-color:white;text-decoration: none;border-left:0.5px solid #E8EBED !important;border:none;color:#385898;">Zaman Tüneli<i style="margin-left:5px;" class="fas fa-caret-down"></i></button>
+                </a>
+
+                <input value="Hakkında" type="button" style="width:11rem;height:4rem;background-color:white;text-decoration: none;border-left:0.5px solid #E8EBED !important;border:none;">
+                <a asp-action="FriendsTab" asp-area="">
+                    <input value="Arkadaşlar" type="button" style="color:#385898;width:11rem;height:4rem;background-color:white;text-decoration: none;border-left:0.5px solid #E8EBED !important;border:none;">
+                </a>
+                <input value="Fotoğraflar" type="button" style="width:11rem;height:4rem;background-color:white;text-decoration: none;border-left:0.5px solid #E8EBED !important;border:none;">
+                <button value="Arşiv" type="submit" style="width:10rem;height:4rem;background-color:white;text-decoration: none;border-left:0.5px solid #E8EBED !important;border:none;"><i style="margin-right:5px;" class="fas fa-lock"></i>Arşiv</button>
+                <button type="submit" style="width:10rem;height:4rem;background-color:white;text-decoration: none;border-right:0.2px solid #E8EBED !important;border-left:0.5px solid #E8EBED !important;border:none;">Diğer<i style="margin-left:5px;" class="fas fa-caret-down"></i></button>
+            </div>
+        </div>
+
+        <div id="backgroundElements" style="width: 30rem;">
+            <div class="avatar-previewr">
+                <img src="~/images/@ViewBag.ProfilePicture">
+            </div>
+            <p style="display: flex;color:white;font-weight: bold;margin-left: 18rem;margin-top: 9rem;font-size: 24px;line-height: 30px;">@ViewBag.Name</p>
+        </div>
+        <div class="row" style="margin-top:8rem;">
+            <div class="col-sm-5" style="padding-left:0;margin-top:30px;">
+                <div id="kunye" class="container-fluid" style="background-color: white;">
+                    <div style="display: flex;">
+                        <i style="        font-size: 20px;
+        color: #4267B2;" class="fa fa-globe" aria-hidden="true"></i>
+                        <p style="font-size: 16px;color:#1c1e21;line-height: 20px;font-weight: 500;margin-left:10px;">Künye</p>
+                    </div>
+                    <div style="border-bottom:1px solid #90949c;padding-bottom:6px;">
+                        <p style="text-align:center;color:#1d2129;font-size: 12px;line-height: 16px;">KisiselBilgiler</p>
+                        <input style="width: 100%;font-size: 12px;line-height: 26px;color:#4b4f56;font-weight: 700;" type="button" value="Biyografiyi Düzenle" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    </div>
+                    <!--ACILIRKAPANIR BIYOGRAFI FORMU-->
+                    <div class="collapse" id="collapseExample" style="background-color: #E9EBEE;">
+                        <div class="form">
+                            <input style="width:100%;height:5rem;text-align: center;color:#1d2129;font-size: 12px;line-height: 16px;" value="KişiselBilgiler">
+                            <div class="container-fluid" style="padding-right:0;">
+                                <input style="float: right;height:2rem;width:5rem;background-color:#4267B2;color:white;border:none;font-size: 12px;font-weight: 700;" type="submit" value="Kaydet">
+                            </div>
+                        </div>
+                    </div>
+                    <ul id="biyo" style="float: left;padding-left:0;border-bottom:1px solid #90949c;width: 100%;margin-top:10px;padding-bottom: 10px;">
+                        <li>
+                            <i class="fas fa-home"></i>
+                            <a href="#">Yaşadığı Şehir</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-briefcase"></i>
+                            <a href="#">İşyeri</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-graduation-cap"></i>
+                            <a href="#">Okul</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <a href="#">Memleketi</a>
+                        </li>
+                        <li>
+                            <i class="far fa-heart"></i>
+                            <a href="#">İlişki Durumu</a>
+                        </li>
+                    </ul>
+                    <div style="text-align: center;">
+                        <i class="fas fa-star" style="border-radius: 16px;color:#90949c;border:1px solid #90949c;padding:4px;"></i>
+                        <p style="font-size: 12px;line-height:16px;color:#1c1e21;margin-top:10px;">
+                            Herkese açık profilindeki öne çıkanlar kısmına fotoğraflar, sayfalar, gruplar ve daha fazlasını ekleyerek senin için nelerin önemli olduğunu sergile.
+                        </p>
+                        <a style="font-size: 12px;line-height:16px;color:#3578e5;" href="#">Öne Çıkanlara Ekle</a>
+                    </div>
+                </div>
+                <div class="container-fluid" id="photos">
+
+                </div>
+                <div class="container-fluid" id="friends">
+
+                </div>
+                <div id="langs">
+                    <p style="display: inline-block;width: 75%;padding:7px;">Türkçe ·<a href="#">Kurdî (Kurmancî)</a>  ·<a href="#">العربية</a>  · <a href="#">English (US)</a> · <a href="#">Español</a></p>
+                    <div class="forPlusIcon">
+                        <i class="fa fa-plus" style="font-size:15px;margin-top:3px;"></i>
+                    </div>
+                </div>
+                <div id="politika">
+                    <a>Gizlilik</a> ·<a>Koşullar</a>  ·<a>Reklamlar</a>  · <a>Ad Choices</a> · <a>Çerezler</a> · <a>Diğer</a>
+                    <p style="color:#616770;">Facebook © 2020</p>
+                </div>
+            </div>
+            <div class="col-7" style="padding-left: 0;padding-right: 0;margin-top:30px;">
+                <div class="post-box">
+                    <div id="gOlustur">
+                        <i class="fas fa-edit" style="float: left;"></i>
+                        Gönderi Oluştur
+                    </div>
+                    <div id="postText" style="display: flex;">
+                        <div class="postPp">
+                            <img src="~/images/@ViewBag.ProfilePicture">
+                        </div>
+                        <input id="neler" style="width:100%;height:3rem; border: none;
+                             color:#E9EBEE;font-size: 15px;font-weight: 400;margin-top:10px;" placeholder="Ne düşünüyorsun?">
+                    </div>
+                    <div id="postEnd">
+                        <div id="postEndItem">
+                            <span>
+                                <img src="~/img/interface.png" style="height: 16px;width: 16px;margin-right:2px;">
+                                <p style="display: inline-block;font-weight: bold;">Fotoğraf/Video</p>
+                            </span>
+                        </div>
+                        <div id="postEndItem">
+                            <span>
+                                <img src="~/img/tagfriend.png" style="height: 20px;width: 20px;margin-right:5px;">
+                                <p style="display: inline-block;font-weight: bold;">Arkadaşların...</p>
+                            </span>
+                        </div>
+                        <div id="postEndItem">
+                            <span>
+                                <i class="fas fa-map-marker-alt" style="color:red;margin-right:5px;font-size:16px;"></i>
+                                <p style="display: inline-block;font-weight: bold;">Yerini Bildir</p>
+                            </span>
+                        </div>
+                        <div id="postEndItem" style="width:10% !important;text-align: center;">
+                            <span>
+                                <i style="font-size: 18px;" class="fas fa-ellipsis-h"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div id="post_alt" class="row" style="display: inline-block;margin:3px;">
+                    <p style="display: inline-block;color:#606770;font-size:12px;font-weight:600;line-height: 16px;margin-right:13px;padding-left:0 !important;">Gönderiler</p>
+                    <button style="margin-right:5px; color:#4b4f56 !important;width:14rem;
+                font-weight: 700 !important;">
+                        <i class="fas fa-bars" style="float: left;margin-top:3px;"></i>Gönderileri Yönet
+                    </button>
+                    <button style="margin-right:5px; color:#4b4f56 !important;width:14rem;
+                font-weight: 700 !important;">
+                        <i class="fas fa-bars" style="float: left;margin-top:3px;"></i>Liste Görünümü
+                    </button>
+                    <button style="margin-right:5px; color:#4b4f56 !important;width:14rem;
+                font-weight: 700 !important;">
+                        <i class="fa fa-th-large" style="float: left;margin-top:3px;"></i>Izgara Görünümü
+                    </button>
+                </div>
+                <!--BAŞLA-->
+                @foreach (var item in @ViewBag.Post)
+                {
+                    <div class="post-box" style="max-height: 100rem;">
+                        <div style="display: flex;">
+                            <div class="postPp" style="margin-left: 10px;display: flex;">
+                                <img src="~/images/@item.ProfilePicture">
+                            </div>
+                            <div class="content" style="display: inline-block;margin-top: 10px;margin-left: 5px;">
+                                <a style="font-size:14px;line-height:19px;font-weight:600;color:#385898;display: block;">@item.UserName @item.LastName</a>
+                                <a style="font-size:12px;line-height:16px;font-weight:400;color:#616770;display: block;">@item.CreateDate</a>
+                            </div>
+                            <i style="font-size:16px;color:#5a605a;margin-left:38rem;margin-top:13px;" class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <div class="container" style="width:96%;margin-left:2%;margin-right:2%;display: block !important;height:20%;float:left;margin-top:10px;
+        border-bottom:1px solid rgb(204, 204, 204);">
+                            <p style="color:#1c1e21;font-size: 24px;line-height: 28px;font-weight: 400;margin-left:-10px !important;margin-bottom:20px;">@item.PostText</p>
+                            <div style="margin-bottom:10px;"><i class="far fa-thumbs-up" style="margin-right:10px;"></i><a>@item.Likes.Count</a></div>
+
+                        </div>
+
+                        <ul id="gonderiBtns" class="container" style="border-bottom:1px solid rgb(204, 204, 204);list-style-type:none ;display: flex;">
+                            <form action="Like" method="post">
+                                <li><button><i style="font-size: 16px; margin-right: 5px; " class="far fa-thumbs-up"></i>Beğen</button></li>
+                                <input asp-for="Like.PostID" value="@item.PostID" type="hidden" />
+                            </form>
+                            <li><button type="button"><i style="font-size:16px;margin-right: 5px;" class="far fa-comment-alt"></i>Yorum Yap</button></li>
+                            <li><button><i style="font-size:16px;margin-right: 5px;" class="fas fa-share"></i>Paylaş</button></li>
+                        </ul>
+                        @foreach (var comments in item.Comments)
+                        {
+                            <div class="container" id="comments" style="padding-left: 0;margin-bottom:12px;">
+                                <img src="~/images/@comments.CommentedByPicture">
+                                <div class="container" style="background-color:#E9EBEE;border-radius:16px;margin-left:5rem;width: auto;padding-top:7px;">
+                                    <p style="width: auto;font-size:13px;color:#1c1e21;padding-top:5px;"><a style="color:#385898 !important;font-weight:700 !important;">@comments.CommentedByName</a> @comments.Message</p>
+                                    <input asp-for="Post.PostID" type="hidden" value="@item.PostID" />
+                                </div>
+                                <div class="container" style="margin-left:40px;color:#385898;font-size:12px;">
+                                    <a href="#" style="margin-right:10px;color:#385898 !important;">Beğen</a>
+                                    <a style="margin-right:10px;color:#385898 !important;" href="#">Yanıtla</a> <a style="color:#606770 !important;">@(DateTime.Now - comments.CommentedDate)</a>
+                                </div>
+                            </div>
+                        }
+
+                        <form asp-action="Comment" method="post">
+                            <div style="margin-bottom:16px;padding-left: 0;padding-right: 0;" class="container" id="commentPp">
+                                <img src="~/images/@ViewBag.ProfilePicture">
+                                <div class="container">
+
+                                    <input asp-for="Comment.Message" id="yorum" placeholder="Yorum yaz..." style="margin-bottom:10px;margin-left:10px;font-size:13px;height:30px;border-radius:16px;width:28.8vw;display: inline-block;background-color: #E9EBEE;border:1px solid rgb(204, 204, 204);">
+                                    <div type="hidden">
+                                        <input asp-for="Comment.PostID" value="@item.PostID" type="hidden" />
+                                        <input asp-for="Comment.PostedBy" value="@item.Eposta" type="hidden" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                }
+                <!--SON-->
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3"> </div>
+
+</div>
+<!-- PROFİL DUZENLE   -->
+<div id="gorunur" class="modal-content" style="height:70rem;z-index:100;visibility:hidden;width:45%;left:25%;bottom:115rem;">
+    <div style="height:4rem; background-color:#E9EBEE;color: #1d2129;padding: 10px;">
+        <p style="display:inline-block;float: left;font-size: 14px;font-weight: 600;line-height: 19px;font-family:Arial, Helvetica, sans-serif">Profili düzenle</p>
+        <button onclick="closeFunc()" style="float:right;">
+            <i class="fas fa-times" style="color:grey;"></i>
+        </button>
+    </div>
+    <form asp-action="New" enctype="multipart/form-data">
+
+        <input asp-for="BackgroundImg" id="upload" type="file" onchange="readURL(this);" class="form-control " style="position: absolute;float:left;width: 30px;border:2px double #E8EBED;margin-left:10px;margin-top:10px;">
+
+        <i style="float:left;color:#CFD0D3;font-size: 20px;margin-top:-14em;" id="upload-label" class="fas fa-camera"></i>
+        <div class="image-area" style="padding:0;z-index:-1; height: 27rem;">
+            <img style="width: 100%; height:27rem;" id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block">
+        </div>
+        <div class="avatar-upload">
+            <div class="avatar-edit">
+                <input asp-for="ProfileImage" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                <label asp-for="ProfileImage" for="imageUpload"></label>
+            </div>
+            <div class="avatar-preview">
+                <div asp-append-version="true" asp-for="ImageFile" id="imagePreview" style="z-index: 100 !important;">
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" style="height:5rem;background-color:#F5F6F7;padding:15px;border-bottom:1px solid #E9EBEE;border-top:1px solid #E9EBEE;">
+            <i style="font-size:14px;color:#1c1e21;margin-right:10px;" class="fas fa-file-invoice"></i>
+            <p style="display:inline-block;color:#4b4f56;font-size:14px;font-weight:600;">Biyografiyi Düzenle</p>
+            <input type="submit" style="background-color:#365899;color:white;border:none;float:right;font-size:12px;line-height:22px;font-weight:700;" value="Kaydet" />
+        </div>
+    </form>
+    <div style="height:6rem;text-align:center;font-size:12px;" class="container">
+        Kişisel Bilgiler
+    </div>
+    <div class="container" style="height:5rem;background-color:#F5F6F7;padding:15px;border-bottom:1px solid #E9EBEE;border-top:1px solid #E9EBEE;">
+        <i style="font-size:14px;color:#1c1e21;margin-right:10px;" class="fas fa-photo-video"></i>
+        <p style="display:inline-block;color:#4b4f56;font-size:14px;font-weight:600;">Öne Çıkanları Düzenle</p>
+        <input type="submit" style="background-color:#365899;color:white;border:none;float:right;font-size:12px;line-height:22px;font-weight:700;" value="Düzenle" />
+
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+    function myFunction() {
+        document.getElementById("gorunur").style.visibility = "visible";
+        document.getElementById("arkaplan").style.opacity = "0.4";
+    }
+    function closeFunc() {
+        document.getElementById("gorunur").style.visibility = "hidden";
+        document.getElementById("arkaplan").style.opacity = "1";
+    }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            var infoArea = document.getElementById('upload-label');
+            reader.onload = function (e) {
+                $('#imageResult')
+                    .attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(function () {
+        $('#upload').on('change', function () {
+            readURL(input);
+        });
+    });
+
+
+    function readPPURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imageUpload").change(function () {
+        readPPURL(this);
+    });
+
+</script>
+<!--author:Eda Nur Tokmak-->

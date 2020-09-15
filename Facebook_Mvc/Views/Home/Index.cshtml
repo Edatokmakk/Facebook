@@ -1,0 +1,246 @@
+﻿<!--author:Eda Nur Tokmak-->
+
+@model Facebook_Mvc.ViewModel.AllModels
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/home.css">
+
+<div class="row">
+    <div class="col-1"></div>
+    <div style="height:80rem !important;" class="col-sm-2">
+        <div class="StaticLoggedOutHomePage-communicationContent">
+            <!-- <a asp-area="" asp-controller="Home" asp-action="Index"> -->
+            <div class="StaticLoggedOutHomePage-communicationItem" style="margin-bottom: 20px;">
+                <span class="Icon">
+                    <div class="pp">
+                        <img src="~/images/@ViewBag.ProfilePicture">
+                    </div>
+
+                </span>@ViewBag.Name
+            </div>
+            <!-- </a> -->
+            <div class="StaticLoggedOutHomePage-communicationItem" id="haberk">
+                <span class="Icon">
+                    <img src="https://img.icons8.com/nolan/64/google-news.png" />
+                </span>Haber Kaynağı
+                <i style="font-size:15px;color:#5a605a;margin-left:50px;margin-top:8px;" class="fas fa-ellipsis-h"></i>
+            </div>
+
+            <a asp-area="" asp-controller="Home" asp-action="Messenger">
+                <div class="StaticLoggedOutHomePage-communicationItem">
+                    <span class="Icon Icon--reply">
+                        <img src="https://img.icons8.com/color/48/000000/facebook-messenger.png" />
+                    </span>Messenger
+                </div>
+            </a>
+
+            <div class="StaticLoggedOutHomePage-communicationItem">
+                <span class="Icon Icon--reply">
+                    <img src="https://img.icons8.com/nolan/64/youtube-play.png" />
+                </span>Watch
+            </div>
+            <div class="StaticLoggedOutHomePage-communicationItem">
+                <span class="Icon Icon--reply">
+                    <img src="https://img.icons8.com/color/48/000000/shop.png" />
+                </span>MarketPlace
+            </div>
+            <p style="color:#5a605a;font-size:13px;line-height:17px;font-weight:400;padding: 0;margin: 0;margin-top:10px;"><strong>Kısayollar</strong></p>
+            <div class="StaticLoggedOutHomePage-communicationItem">
+                <span class="Icon Icon--reply">
+                    <img src="https://img.icons8.com/color/48/000000/pool-table.png" />
+                </span>8 Ball Pool
+            </div>
+            <p style="color:#5a605a;font-size:13px;line-height:17px;font-weight:400;padding: 0;margin: 0;margin-top:10px;"><strong>Keşfet</strong></p>
+
+            <div class="StaticLoggedOutHomePage-communicationItem">
+                <span class="Icon Icon--reply">
+                    <img src="https://img.icons8.com/doodle/48/000000/filled-flag.png" />
+                </span>Sayfalar
+            </div>
+            <div class="StaticLoggedOutHomePage-communicationItem">
+                <span class="Icon Icon--reply">
+                    <img src="https://img.icons8.com/cotton/64/000000/groups--v1.png" />
+                </span>Gruplar
+            </div>
+            <div class="StaticLoggedOutHomePage-communicationItem">
+                <span class="Icon Icon--reply">
+                    <img src="https://img.icons8.com/color/48/000000/pay-date.png" />
+                </span>Etkinlikler
+            </div>
+            <div class="StaticLoggedOutHomePage-communicationItem">
+                <span class="Icon Icon--reply">
+                    <i class="fas fa-ellipsis-h"></i>
+                </span>Daha Fazla
+            </div>
+        </div>
+
+    </div>
+    <div class="col-4" id="orta">
+
+        <div class="post-box" style="margin-top: 5rem;height:15rem;">
+            <div id="gOlustur">
+                Gönderi Oluştur
+            </div>
+            <form asp-action="Text" method="post">
+                <div id="postText" style="display:flex;">
+                    <div class="postPp">
+                        <img src="~/images/@ViewBag.ProfilePicture">
+                    </div>
+                    <input asp-for="Post.PostText" id="neler" style="outline:0 !important;width:100%;height:3rem; border: none;font-size: 15px;font-weight: 400;margin-top:10px;" placeholder="Ne düşünüyorsun, UserName?">
+                    @*<button type="submit">Paylaş</button>*@
+                </div>
+                <div id="postEnd">
+                    <!-- <a asp-area="" asp-controller="Home" asp-action="Index"> -->
+                    <div id="postEndItem">
+                        <span>
+                            <i class="fas fa-video" style="font-size:16px;color:purple;"></i>
+                            <p style="display: inline-block;">Oda Oluştur</p>
+                        </span>
+                    </div>
+                    <div id="postEndItem">
+                        <span>
+                            <img src="~/img/interface.png" style="height: 16px;width: 16px;margin-right:2px;">
+                            <p style="display: inline-block;">Fotoğraf/Video</p>
+                        </span>
+                    </div>
+                    <div id="postEndItem">
+                        <span>
+                            <img src="~/img/tagfriend.png" style="height: 20px;width: 20px;margin-right:5px;">
+                            <p style="display: inline-block;">Arkadaşların...</p>
+                        </span>
+                    </div>
+                    <div id="postEndItem" style="width:10% !important;text-align: center;">
+                        <span>
+                            <i style="font-size: 18px;" class="fas fa-ellipsis-h"></i>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="post-box" style="height: 7rem;">
+
+            <div class="postPp" style="margin-left:10px;border:1px solid #E9EBEE;">
+                <img style="margin-bottom:20px !important;" src="~/img/_Add_new_plus_-512.png" />
+            </div>
+
+            <div class="story" style="display: inline-block;margin-top:15px;">
+                <a href="#" style="font-size:14px;line-height: 19px;font-weight: 700;color:#385898;">Hikayene Ekle</a>
+                <p style="font-size:12px;font-weight: 400;line-height: 16px;color:#606770;">Bir fotoğraf veya video paylaş ya da bir şeyler yaz</h6>
+            </div>
+        </div>
+
+        @foreach (var item in @ViewBag.Post)
+        {
+            <div class="post-box" style="max-height: 100rem;">
+                <div style="display: flex;">
+                    <div class="postPp" style="margin-left: 10px;display: flex;">
+                        <img src="~/images/@item.ProfilePicture">
+                    </div>
+                    <div class="content" style="display: inline-block;margin-top: 10px;margin-left: 5px;">
+                        <a style="font-size:14px;line-height:19px;font-weight:600;color:#385898;display: block;">@item.UserName @item.LastName</a>
+                        @if (item.PostPicture == item.ProfilePicture)
+                        {
+                            <p style="display:inline-block;">profil resmini güncelledi.</p>
+                        }
+                        <a style="font-size:12px;line-height:16px;font-weight:400;color:#616770;display: block;">@item.CreateDate</a>
+                    </div>
+                    <i style="font-size:16px;color:#5a605a;margin-left:38rem;margin-top:13px;" class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="container" style="width:96%;margin-left:2%;margin-right:2%;display: block !important;height:20%;float:left;margin-top:10px;
+        border-bottom:1px solid rgb(204, 204, 204);">
+                    <p style="color:#1c1e21;font-size: 24px;line-height: 28px;font-weight: 400;margin-left:-10px !important;margin-bottom:20px;">@item.PostText</p>
+                    @if (item.PostPicture != null)
+                    {
+                        <img src="~/images/@item.PostPicture" style="height:40rem;width:40rem;border-radius:100rem;border:1px solid #E9EBEE;padding:8px;margin-left:60px;" />
+                    }
+                    <div style="margin-bottom:10px;"><i class="far fa-thumbs-up" style="margin-right:10px;"></i><a class="likecount" href="#" data-toggle="popover" data-placement="top" data-toggle="popover">@item.Likes.Count</a></div>
+                    <div id="popover-content" style="display: none;background-color:#282828 !important;color:white !important;">
+                        <ul class="list-group custom-popover">
+                            @foreach (var like in item.Likes)
+                            {
+                                <li class="list-group-item">@like.Name</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <ul id="gonderiBtns" class="container" style="border-bottom:1px solid rgb(204, 204, 204);list-style-type:none ;display: flex;">
+                    <form action="Like" method="post">
+                        <li><button><i style="font-size: 16px; margin-right: 5px; " class="far fa-thumbs-up"></i>Beğen</button></li>
+                        <input asp-for="Like.PostID" value="@item.PostID" type="hidden" />
+                    </form>
+                    <li><button type="button"><i style="font-size:16px;margin-right: 5px;" class="far fa-comment-alt"></i>Yorum Yap</button></li>
+                    <form asp-action="Share" method="post">
+                        <input asp-for="Share.PostID" type="hidden" value="@item.PostID" />
+                        <li><button><i style="font-size:16px;margin-right: 5px;" class="fas fa-share"></i>Paylaş</button></li>
+                    </form>
+                </ul>
+                @foreach (var comments in item.Comments)
+                {
+                    <div class="container" id="comments" style="padding-left: 0;margin-bottom:12px;">
+                        <img src="~/images/@comments.CommentedByPicture">
+                        <div class="container" style="background-color:#E9EBEE;border-radius:16px;margin-left:5rem;width: auto;padding-top:7px;">
+                            <p style="width: auto;font-size:13px;color:#1c1e21;padding-top:5px;"><a style="color:#385898 !important;font-weight:700 !important;">@comments.CommentedByName</a> @comments.Message</p>
+                            <input asp-for="Post.PostID" type="hidden" value="@item.PostID" />
+                        </div>
+                        <div class="container" style="margin-left:40px;color:#385898;font-size:12px;">
+                            <a href="#" style="margin-right:10px;color:#385898 !important;">Beğen</a>
+                            <a style="margin-right:10px;color:#385898 !important;" href="#">Yanıtla</a> <a style="color:#606770 !important;">
+                                @(DateTime.Now - comments.CommentedDate)
+                            </a>
+                        </div>
+                    </div>
+                }
+
+                <form asp-action="Comment" method="post">
+                    <div style="margin-bottom:16px;padding-left: 0;padding-right: 0;" class="container" id="commentPp">
+                        <img src="~/images/@ViewBag.ProfilePicture">
+                        <div class="container">
+
+                            <input asp-for="Comment.Message" id="yorum" placeholder="Yorum yaz..." style=" outline: 0 !important;
+margin-bottom:10px;margin-left:10px;font-size:13px;height:30px;border-radius:16px;width:28.8vw;display: inline-block;background-color: #E9EBEE;border:1px solid rgb(204, 204, 204);">
+                            <div type="hidden">
+                                <input asp-for="Comment.PostID" value="@item.PostID" type="hidden" />
+                                <input asp-for="Comment.PostedBy" value="@item.Eposta" type="hidden" />
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        }
+    </div>
+    <div style="padding-left: 10px;padding-right: 0;" class="col-2">
+        <div class="space">
+        </div>
+        <div id="langs">
+            <p style="display: inline-block;width: 75%;padding:7px;">Türkçe ·<a href="#">Kurdî (Kurmancî)</a>  ·<a href="#">العربية</a>  · <a href="#">English (US)</a> · <a href="#">Español</a></p>
+            <div class="forPlusIcon">
+                <i class="fa fa-plus" style="font-size:15px;margin-top:3px;"></i>
+            </div>
+        </div>
+        <div id="politika">
+            <a>Gizlilik</a> ·<a>Koşullar</a>  ·<a>Reklamlar</a>  · <a>Ad Choices</a> · <a>Çerezler</a> · <a>Diğer</a>
+            <p style="color:#616770;">Facebook © 2020</p>
+        </div>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-2"></div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover({
+            html: true,
+            content: function () {
+                return $('#popover-content').html();
+            }
+        });
+    });
+</script>
+<!--author:Eda Nur Tokmak-->

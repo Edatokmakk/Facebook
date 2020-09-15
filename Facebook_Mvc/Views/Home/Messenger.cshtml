@@ -1,0 +1,140 @@
+﻿<!--author:Eda Nur Tokmak-->
+
+@model Facebook_Mvc.Models.Messages
+@{
+    ViewData["Title"] = "Messenger";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/css/messages.css" type="text/css" rel="stylesheet" />
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div class="row" style="margin-top:4rem;background-color:white !important;">
+    <div class="col-3" style="height: auto;border-right:1.5px solid #F2F2F2;">
+        <div class="row" style="height: 10rem;display: flex;padding-left:30px;padding-top: 15px;">
+            <div class="col-2">
+                <img src="~/images/@ViewBag.ProfilePicture" style="width: 45px;height:45px;border-radius:25px;float: left;">
+            </div>
+            <div class="col-10">
+                <p style="font-size:24px;font-weight:700;margin-bottom:-5px;display: inline-block;">Sohbetler</p>
+                <ul style="float:right;display:flex;">
+                    <li style="list-style-type: none;"><i class="fas fa-cog" style="font-size:20px;border-radius: 20px;background-color: #F2F2F2;padding:10px;"></i></li>
+                    <li style="list-style-type: none;margin-left:15px;"><i class="fas fa-edit" style="font-size:20px;border-radius: 20px;background-color: #F2F2F2;padding:10px;"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid" style="background-color:#F2F2F2;border-radius: 16px;height:3rem;margin-left:20px;width: 95%;margin-top:-20px;">
+            <span><i class="fas fa-search" style="font-size: 15px;"></i></span>
+            <input type="text" placeholder="Messenger'da Ara" style="border:none;background-color:#F2F2F2;border-radius: 16px;padding: 10px;font-size:15px;height:3rem;" />
+        </div>
+        @foreach (var item in ViewBag.Friends)
+        {
+            <form asp-action="getUser" method="post">
+                <div class="container-fluid" style="background-color:#F2F2F2;border-radius: 16px;height:7rem;margin-left:8px;margin-top: 10px;padding: 9px;">
+                    <input asp-for="RecipientEposta" class="kisiler" type="hidden" value="@item.Eposta" />
+                    <img src="~/images/@item.ProfilePicture" style="width: 55px;height:55px;border-radius:26px;float:left;">
+                    <button type="submit" style="display:inline-block;margin-top:15px;font-size: 15px;margin-left: 5px;font-weight: 400;border:none !important;">@item.UserName @item.LastName</button>
+                </div>
+            </form>
+        }
+    </div>
+    <div class="col-9">
+        <div class="row" style="height: 7rem;border-bottom:1.5px double #F2F2F2;padding:12px;padding-right:0 !important;">
+            <img src="~/images/@ViewBag.RecipientPP" style="width: 45px;height:45px;border-radius:25px;float: left;">
+            <p style="display:inline-block;font-size: 15px;margin-left: 5px;font-weight: 700;line-height: 19px;margin-right:83rem;margin-top: 10px;">@ViewBag.RecipientName</p>
+            <ul style="display:flex;float:right;" id="tabIconları">
+                <li><i class="fas fa-phone-alt"></i></li>
+                <li><i class="fas fa-video"></i></li>
+                <li><i class="fas fa-info-circle"></i></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-8" style="border-right:1.5px solid #F2F2F2;padding:0;">
+
+                <div class="card-body msg_card_body" style="margin-top:20rem;" id="messageList">
+                    @*<ul id="messagesList"></ul>*@
+                    @if (ViewBag.RecipientEposta != null)
+                    {
+                        @foreach (var msg in ViewBag.Messages)
+                        {
+                            @if (msg.SenderEposta == ViewBag.RecipientEposta && msg.RecipientEposta == ViewBag.Eposta)
+                            {
+                                <div class="d-flex justify-content-start mb-4">
+                                    <div class="img_cont_msg">
+                                        <img src="~/images/@ViewBag.RecipientPP" class="rounded-circle user_img_msg" style="width:30px;height:30px;">
+                                    </div>
+                                    <div class="msg_cotainer">
+                                        @msg.Message
+                                        @*<span class="msg_time">8:40 AM, Today</span>*@
+                                    </div>
+                                </div>
+                            }
+                            else if (msg.RecipientEposta == ViewBag.RecipientEposta && msg.SenderEposta == ViewBag.Eposta)
+                            {
+                                <div class="d-flex justify-content-end mb-4">
+                                    <div class="msg_cotainer_send">
+                                        @msg.Message
+                                        @*<span class="msg_time_send">8:55 AM, Today</span>*@
+                                    </div>
+                                    @*<div class="img_cont_msg">
+                                            <img src="img/facebook.png" class="rounded-circle user_img_msg">
+                                        </div>*@
+                                </div>
+                            }
+                        }
+                    }
+
+                </div>
+
+                <ul id="messageInput" style="display: flex;  position: fixed;bottom:0 !important;padding-left: 0;background-color:white !important;">
+                    <li><i class="fas fa-plus-circle" style="margin-top:8px;"></i></li>
+                    <li><i class="fas fa-sticky-note" style="margin-top:8px;"></i></li>
+                    <li><i class="fas fa-sticky-note" style="margin-top:8px;"></i></li>
+                    <li><i class="far fa-image" style="margin-top:8px;"></i></li>
+                    <li>
+                        <div class="input-container" style="border-radius: 16px;height:4rem;background-color:#F2F2F2 !important;">
+                            @*<form id="msgform">*@
+                            <input asp-for="Message" id="messagInput" type="text" placeholder="Bir mesaj yaz..."
+                                   style="border:none;background-color:#F2F2F2;border-radius:16px;font-size:15px;padding:5px;height:4rem;width: 55rem;padding:10px;outline: none;">
+                            <span><i class="fas fa-smile" style="margin-right:10px;margin-top:9px;"></i></span>
+                            <input id="userInputNm" value="@ViewBag.RecipientName" type="hidden" />
+                            <input name="usereposta" id="userInput" value="@ViewBag.RecipientEposta" type="hidden" />
+                            <input name="Text" id="meInput" value="@ViewBag.Eposta" type="hidden" />
+                            <button type="submit" id="sendButton" value="Gönder" style="border:none;background-color:transparent;">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                            @*</form>*@
+                        </div>
+                    </li>
+                    <li><i class="fas fa-thumbs-up" style="margin-top:6px;"></i></li>
+                </ul>
+            </div>
+            <div class="col-4" style="height:90rem;">
+                <div class="row" style="height: 17rem;border-bottom:1.5px solid #F2F2F2;text-align: center;display: block;">
+                    <img src="~/images/@ViewBag.RecipientPP" style="width: 100px;height:100px;border-radius:50px;margin-top:15px;">
+                    <h4 style="font-size: 20px;font-weight: 700;margin-top:10px;">@ViewBag.RecipientName</h4>
+                </div>
+                <div class="row" style="height: 22rem;border-bottom:1.5px solid #F2F2F2;">
+                    <div class="container-fluid" style="height:4rem;padding:12px;" id="secenekler">
+                        <p style="display: inline-block;color:rgba(0, 0, 0, 0.34);font-size: 13px;line-height: 17px;font-weight: 700;">SEÇENEKLER</p>
+                        <i class="fas fa-angle-down" style="float:right;color:rgba(0, 0, 0, 0.34);font-size: 20px"></i>
+                    </div>
+                </div>
+                <div class="row" style="height: 22rem;">
+                    <div class="container-fluid" style="height:4rem;padding:12px;" id="secenekler">
+                        <p style="display: inline-block;color:rgba(0, 0, 0, 0.34);font-size: 13px;line-height: 17px;font-weight: 700;">GİZLİLİK VE DESTEK</p>
+                        <i class="fas fa-angle-left" style="float:right;color:rgba(0, 0, 0, 0.34);font-size: 20px"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="~/js/chat.js"></script>
+

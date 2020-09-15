@@ -1,0 +1,84 @@
+﻿@model Facebook_Mvc.Models.User
+@{
+    ViewData["Title"] = "RequestToHtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/home.css">
+<div class="row">
+    <div class="col-1" style="margin-right:20px;"> </div>
+
+    <div class="col-5" style="margin-left: 120px;margin-top:7rem;">
+        <div class="row" style="height:8rem;background-color: white;display: block;padding-left: 14px;padding-top: 14px;border-bottom:1px solid #E9EBEE !important;">
+            <p style="color: #1c1e21;
+        font-size: 14px;
+        font-weight: 700;
+">Gönderilen Arkadaşlık İstekleri</p>
+            <a style="font-size:11px;line-height:15px;color:#4267B2;" href="#">Alınan İstekleri Gör</a>
+        </div>
+        @foreach (var item in @ViewBag.RequestTo)
+        {
+            <div class="row" style="height:10rem;padding-left: 14px;padding-top:9px;background-color: white;border-bottom:1px solid #E9EBEE !important;">
+                <img src="~/images/@item.ProfilePicture" style="height:8rem;width: 8rem;float:left;">
+                <a href="#" style="margin-left: 9px; margin-top: 2.5rem; font-size: 16px; line-height: 21px; font-weight: 700; color: #385898;">@item.UserName @item.LastName</a>
+                <ul style="margin-left: 46rem;list-style-type: none;display: flex;margin-top:-5.5rem;" id="newFriend">
+                    <li>
+                        @*<form asp-action="İsteğiİptalEt" method="post">*@
+                            <button class="AddFriend" type="submit" style="background-color: #4267B2; color: white;margin-right: 10px; border: 1px solid #A3A6AB;">
+                                <i class="fas fa-user-plus" style="margin-right:5px;color:white;"></i>Arkadaşlık İsteği Gönderildi
+                            </button>
+                            <input type="hidden" asp-for="UserID" value="@item.UserID" />
+                        @*</form>*@
+                    </li>
+                </ul>
+            </div>
+        }
+        <div class="row" style="background-color: white;padding-top: 14px;margin-top:20px;">
+            <div id="rowTitle" style="width:100%;height: 4rem;border-bottom:1px solid #E9EBEE !important;">
+                <p style="padding-left: 14px;color:#1c1e21;font-size:14px;font-weight: 700;"> Tanıyor Olabileceğin Kişiler</p>
+            </div>
+        </div>
+        @foreach (var item in @ViewBag.Persons)
+        {
+            <div class="row" style="height:10rem;padding-left: 14px;padding-top:9px;background-color: white;border-bottom:1px solid #E9EBEE !important;">
+                <img src="~/images/@item.ProfilePicture" style="height:8rem;width: 8rem;float:left;">
+                <a href="#" style="margin-left: 9px; margin-top: 2.5rem; font-size: 16px; line-height: 21px; font-weight: 700; color: #385898;">@item.UserName @item.LastName</a>
+                <ul style="margin-left: 46rem;list-style-type: none;display: flex;margin-top:-5.5rem;" id="newFriend">
+                    <li>
+                        <form asp-action="AddFriendRequest" method="post">
+                            <button class="AddFriend" type="submit" style="background-color: #4267B2; color: white;margin-right: 10px; border: 1px solid #A3A6AB;">
+                                <i class="fas fa-user-plus" style="margin-right:5px;color:white;"></i>Arkadaşı Ekle
+                            </button>
+                            <input type="hidden" asp-for="UserID" value="@item.UserID" />
+                        </form>
+                    </li>
+                    <li><button style="border:none;background-color: #E9EBEE;color:#1c1e21;border:1px solid #A3A6AB;">Kaldır</button></li>
+                </ul>
+            </div>
+        }
+        <!-- <div class="row" style="height:10rem;padding-left: 14px;padding-top:6px;background-color: white;"> </div> -->
+    </div>
+
+    <div class="col-3"> </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+@*<script>
+        $(function () {
+            $(".AddFriend").click(function () {
+                var getUser = $(this).data("userid");
+                $.ajax({
+                    method: "post",
+                    url: "/Home/AddFriendRequest",
+                    data: { friendUser: getUser }
+                })
+
+            });
+
+        });
+    </script>*@
